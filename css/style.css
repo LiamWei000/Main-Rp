@@ -109,6 +109,11 @@ nav {
     border: none;
     font-size: 20px;
     cursor: pointer;
+    transition: transform 0.5s ease, opacity 0.3s ease; /* Efek halus */
+}
+
+.theme-btn:active {
+    transform: scale(0.8); /* Efek membal saat diklik */
 }
 
 .menu-toggle {

@@ -4,8 +4,29 @@ function toggleMenu() {
 }
 
 // Dark mode
+// 1. Jalankan ini segera saat halaman dimuat (Cek simpanan tema)
+const savedTheme = localStorage.getItem("theme");
+const themeIcon = document.getElementById("theme-icon");
+
+if (savedTheme === "dark") {
+    document.body.classList.add("dark");
+    if (themeIcon) themeIcon.textContent = "🌙";
+}
+
+// 2. Fungsi untuk ganti tema (saat tombol diklik)
 function toggleTheme() {
     document.body.classList.toggle("dark");
+    const themeBtn = document.getElementById("theme-icon");
+    
+    if (document.body.classList.contains("dark")) {
+        themeBtn.textContent = "🌙"; // Tampilkan bulan saat mode terang
+        themeBtn.style.transform = "rotate(360deg)"; // Bonus: efek putar
+        localStorage.setItem("theme", "dark"); // Simpan pilihan DARK
+    } else {
+        themeBtn.textContent = "☀️"; // Tampilkan matahari saat mode gelap
+        themeBtn.style.transform = "rotate(0deg)"; // Bonus: efek putar
+        localStorage.setItem("theme", "light"); // Simpan pilihan LIGHT
+    }
 }
 
 // Clock
