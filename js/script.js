@@ -175,6 +175,58 @@ function copyIntro() {
         });
 }
 
+/* ===============================
+   COPY EVENT (Better UX)
+================================= */
+function copyEvent() {
+    const event = document.getElementById("eventText");
+    const statusevent = document.getElementById("copyStatusevent");
+
+    if (!event) return;
+
+    navigator.clipboard.writeText(event.innerText)
+        .then(() => {
+            if (!statusevent) return;
+            statusevent.style.display = "block";
+            statusevent.textContent = "Berhasil disalin! ✨";
+
+            setTimeout(() => {
+                statusevent.style.display = "none";
+            }, 2000);
+        })
+        .catch(() => {
+            if (!statusevent) return;
+            statusevent.style.display = "block";
+            statusevent.textContent = "Gagal menyalin ❌";
+        });
+}
+
+/* ===============================
+   COPY OUTRO (Better UX)
+================================= */
+// function copyOutro() {
+//     const outro = document.getElementById("outroText");
+//     const statusoutro = document.getElementById("copyStatusoutro");
+
+//     if (!outro) return;
+
+//     navigator.clipboard.writeText(outro.innerText)
+//         .then(() => {
+//             if (!statusoutro) return;
+//             statusoutro.style.display = "block";
+//             statusoutro.textContent = "Berhasil disalin! ✨";
+
+//             setTimeout(() => {
+//                 statusoutro.style.display = "none";
+//             }, 2000);
+//         })
+//         .catch(() => {
+//             if (!statusoutro) return;
+//             statusoutro.style.display = "block";
+//             statusoutro.textContent = "Gagal menyalin ❌";
+//         });
+// }
+
 // Smooth Scroll untuk Navigasi
 document.querySelectorAll('.nav-links a').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

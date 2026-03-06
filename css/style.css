@@ -87,7 +87,6 @@ body {
     }
 }
 
-/* ================= NAV ================= */
 /* 1. Berikan sticky HANYA pada header */
 header {
     position: sticky;
@@ -115,6 +114,7 @@ header {
     /* Efek bayangan halus */
 }
 
+/* ================= NAV ================= */
 /* 2. Bersihkan properti sticky dari nav agar tidak bentrok */
 nav.container,
 nav {
@@ -363,6 +363,108 @@ nav {
 .btn-copy:hover {
     transform: translateY(-2px);
 }
+
+/* ================= EVENT BOX ================= */
+.event-box {
+    margin: 50px auto;
+    max-width: 520px;
+    padding: 25px;
+    background: var(--glass);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+}
+
+.copy-container-event {
+    background: var(--accent-soft);
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#eventText {
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+#eventText::-webkit-scrollbar {
+    height: 4px;
+}
+
+#eventText::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.btn-copy-event {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-copy-event:hover {
+    transform: translateY(-2px);
+}
+
+/* ================= OUTRO BOX ================= */
+/* .outro-box {
+    margin: 50px auto;
+    max-width: 520px;
+    padding: 25px;
+    background: var(--glass);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+}
+
+.copy-container-outro {
+    background: var(--accent-soft);
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#outroText {
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+#outroText::-webkit-scrollbar {
+    height: 4px;
+}
+
+#outroText::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.btn-copy-outro {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-copy-outro:hover {
+    transform: translateY(-2px);
+} */
 
 /* ================= STATUS ================= */
 .status-box {
