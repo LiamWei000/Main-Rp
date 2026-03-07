@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MAIN Roleplay Network | Multi Anime Interaction Network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO -->
+    <meta name="description"
+        content="MAIN Roleplay Network - Komunitas Multi Anime Interaction. Bergabung dan buat takdirmu bersama karakter anime favoritmu.">
+    <meta name="keywords" content="Roleplay, Anime RP, WhatsApp RP, Multi Anime Interaction">
+    <meta name="author" content="MAIN Roleplay Network">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="MAIN Roleplay Network">
+    <meta property="og:description" content="Where sky meets sea. Create your destiny.">
+    <meta property="og:image" content="assets/logo.jpg">
+    <meta property="og:type" content="website">
+
+    <!-- Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+
+    <style>
+        /* ================= ROOT ================= */
+        :root {
+            --bg: #f5f9ff;
+            --glass: rgba(255, 255, 255, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text: #2e3a59;
+            --accent: #6ea8ff;
+            --accent-soft: rgba(110, 168, 255, 0.15);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 20px;
+            --transition: 0.35s cubic-bezier(.4, 0, .2, 1);
+        }
+
+        body.dark {
+            --bg: #0f172a;
+            --glass: rgba(30, 41, 59, 0.65);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text: #e2e8f0;
+            --accent: #7dd3fc;
+            --accent-soft: rgba(125, 211, 252, 0.15);
+            --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        /* ================= RESET ================= */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            transition: background var(--transition), color var(--transition);
+            overflow-x: hidden;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            /* Minimal setinggi layar */
+        }
+
+        /* ================= BACKGROUND ================= */
+        #particles {
+            position: fixed;
+            inset: 0;
+            z-index: -3;
+        }
+
+        .orb {
+            position: fixed;
+            width: 400px;
+            height: 400px;
+            border-radius: 50%;
+            filter: blur(140px);
+            z-index: -2;
+            opacity: 0.5;
+            animation: floatOrb 15s ease-in-out infinite alternate;
+        }
+
+        .orb1 {
+            background: var(--accent);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb2 {
+            background: #93c5fd;
+            bottom: -150px;
+            right: -100px;
+        }
+
+        @keyframes floatOrb {
+            from {
+                transform: translateY(0px);
+            }
+
+            to {
+                transform: translateY(40px);
+            }
+        }
+
+        /* 1. Berikan sticky HANYA pada header */
+        header {
+            position: sticky;
+            top: 15px;
+            /* Jarak dari atas layar saat scroll */
+
+            /* Gunakan ini agar pas di tengah dan tidak off-screen */
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            /* Menjaga posisi tetap di tengah horizontal */
+
+            z-index: 1000;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            background: var(--glass);
+
+            /* Beri border di semua sisi agar efek melayangnya terasa */
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            /* Membuat ujungnya membulat rapi */
+
+            transition: 0.3s ease;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+            /* Efek bayangan halus */
+        }
+
+        /* ================= NAV ================= */
+        /* 2. Bersihkan properti sticky dari nav agar tidak bentrok */
+        nav.container,
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            background: transparent;
+            /* Biarkan warna dari header yang terlihat */
+            position: relative;
+            /* Ubah dari sticky ke relative */
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+        }
+
+        .logo-container img {
+            height: 40px;
+            border-radius: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            position: relative;
+            font-weight: 500;
+            padding: 5px 0;
+            display: inline-block;
+            /* Penting agar transform scale bekerja maksimal */
+            transition: var(--transition);
+        }
+
+        /* Efek Klik (Feedback Visual) */
+        .nav-links a:active {
+            transform: scale(0.92);
+            /* Sedikit lebih kecil agar terasa "klik" nya */
+            opacity: 0.8;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            /* Mulai dari tengah */
+            bottom: -2px;
+            width: 0%;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+            transform: translateX(-50%);
+            /* Geser agar tetap center */
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .theme-btn {
+            background: none;
+            border: none;
+            font-size: 20px;
+            cursor: pointer;
+            transition: transform 0.4s ease;
+        }
+
+        .theme-btn:hover {
+            transform: rotate(180deg);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        /* ================= HERO ================= */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .glow {
+            font-size: clamp(2rem, 5vw, 3rem);
+            text-shadow: 0 0 20px var(--accent);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 12px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            margin-top: 25px;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px var(--accent-soft);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--accent-soft);
+        }
+
+        /* Pulse */
+        .pulse {
+            animation: pulse 2.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 var(--accent-soft);
+            }
+
+            70% {
+                box-shadow: 0 0 0 20px rgba(0, 0, 0, 0);
+            }
+
+            100% {
+                box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            }
+        }
+
+        /* ================= CHARACTERS ================= */
+        .characters {
+            padding: 100px 8%;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .card {
+            backdrop-filter: blur(25px);
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+
+        /* ================= DESCRIPTION ================= */
+        .description {
+            padding: 100px 8%;
+        }
+
+        .description h2,
+        .description h3 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .description p,
+        .description ul {
+            max-width: 720px;
+            margin: auto;
+        }
+
+        /* ================= INTRO BOX ================= */
+        .intro-box {
+            margin: 50px auto;
+            max-width: 520px;
+            padding: 25px;
+            background: var(--glass);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .copy-container {
+            background: var(--accent-soft);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        #introText {
+            white-space: pre;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            /* Jarak untuk scrollbar */
+            scrollbar-width: thin;
+            /* Untuk Firefox */
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        /* Custom Scrollbar untuk Chrome/Safari agar tetap estetik */
+        #introText::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        #introText::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .btn-copy {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-copy:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ================= EVENT BOX ================= */
+        .event-box {
+            margin: 50px auto;
+            max-width: 520px;
+            padding: 25px;
+            background: var(--glass);
+            border-radius: var(--radius);
+            border: 1px solid var(--glass-border);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .copy-container-event {
+            background: var(--accent-soft);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 20px;
+        }
+
+        #eventText {
+            white-space: pre;
+            overflow-x: auto;
+            font-size: 0.85rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent) transparent;
+        }
+
+        #eventText::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        #eventText::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 10px;
+        }
+
+        .btn-copy-event {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 8px 22px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .btn-copy-event:hover {
+            transform: translateY(-2px);
+        }
+
+        /* ================= OUTRO BOX ================= */
+        /* .outro-box {
+    margin: 50px auto;
+    max-width: 520px;
+    padding: 25px;
+    background: var(--glass);
+    border-radius: var(--radius);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--shadow-soft);
+}
+
+.copy-container-outro {
+    background: var(--accent-soft);
+    padding: 18px;
+    border-radius: 12px;
+    margin-top: 20px;
+}
+
+#outroText {
+    white-space: pre;
+    overflow-x: auto;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) transparent;
+}
+
+#outroText::-webkit-scrollbar {
+    height: 4px;
+}
+
+#outroText::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 10px;
+}
+
+.btn-copy-outro {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-copy-outro:hover {
+    transform: translateY(-2px);
+} */
+
+        /* ================= STATUS ================= */
+        .status-box {
+            padding: 80px;
+            text-align: center;
+            flex: 1;
+        }
+
+        /* ================= REVEAL ================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+
+        .reveal:nth-child(3) {
+            transition-delay: 0.4s;
+        }
+
+        /* ================= RESPONSIVE ================= */
+        @media (max-width: 768px) {
+
+            /* Menu Navigasi Mobile */
+            .nav-links {
+                display: none;
+                /* Sembunyi secara default */
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                /* Jarak dari header melayang kamu */
+                right: 5%;
+                width: 200px;
+                padding: 20px;
+
+                background: var(--glass);
+                backdrop-filter: blur(25px);
+                -webkit-backdrop-filter: blur(25px);
+
+                border-radius: var(--radius, 15px);
+                border: 1px solid var(--glass-border, rgba(255, 255, 255, 0.1));
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                z-index: 1001;
+                /* Pastikan di atas konten lain */
+            }
+
+            /* Munculkan saat tombol hamburger diklik */
+            .nav-links.active {
+                display: flex;
+                animation: slideDown 0.3s ease-out;
+                /* Tambah animasi dikit biar keren */
+            }
+
+            .menu-toggle {
+                display: block;
+                /* Tombol ☰ muncul di HP */
+            }
+
+            /* Penyesuaian Spasi Konten di HP */
+            .characters,
+            .description {
+                padding: 60px 6%;
+            }
+
+            .status-box {
+                padding: 40px 20px;
+            }
+        }
+
+        /* Animasi sederhana untuk menu mobile */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ================= FOOTER ================= */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            /* Membuat teks ke tengah */
+            width: 100%;
+            backdrop-filter: blur(10px);
+            background: var(--glass);
+            /* Mengikuti tema transparan kamu */
+            margin-top: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            color: var(--text);
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <div class="orb orb1" aria-hidden="true"></div>
+    <div class="orb orb2" aria-hidden="true"></div>
+
+    <!-- ================= NAVIGATION ================= -->
+    <header>
+        <nav class="container">
+            <div class="logo-container">
+                <img src="assets/logo.jpg" alt="Logo MAIN Roleplay" width="40" height="40" loading="lazy">
+                <span>MAIN Roleplay</span>
+            </div>
+
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#characters">Characters</a>
+                <a href="#status">Status</a>
+            </div>
+
+            <div class="nav-right">
+                <button onclick="toggleTheme()" class="theme-btn" id="theme-icon" aria-label="Toggle Dark Mode">
+                    ☀️
+                </button>
+
+                <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+                    ☰
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- ================= HERO ================= -->
+    <main>
+
+        <section class="hero reveal" id="home">
+            <h1 class="glow">Multi Anime Interaction Network</h1>
+            <p>Where sky meets sea. Create your destiny.</p>
+
+            <a href="https://chat.whatsapp.com/KUM2Li8pvvU5KWb97BmpvM" target="_blank" rel="noopener noreferrer"
+                class="btn pulse">
+                Join WhatsApp
+            </a>
+        </section>
+
+        <!-- ================= CHARACTERS ================= -->
+        <section class="characters" id="characters">
+            <h2>Featured Characters</h2>
+
+            <div class="grid">
+
+                <!-- Card Template Example -->
+                <article class="card">
+                    <img src="assets/characters/Mai-Ouzuka.jpg" alt="">
+                    <h3>Mai Ouzuka</h3>
+                    <p>Mai Ouzuka (Odzuka) is a lead character in the series There's No Freaking Way I'll be Your Lover!
+                        Unless.... She is a popular high schooler of mixed heritage, a professional model, and the
+                        daughter
+                        of a famous designer. She is characterized by her blonde hair and her complex, evolving
+                        relationship
+                        with Renako Amaori.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/marin-kitagawa.jpg" alt="">
+                    <h3>Marin Kitagawa</h3>
+                    <p>Marin Kitagawa is the female protagonist of the series My Dress-Up Darling (Sono Bisque Doll wa
+                        Koi o
+                        Suru). She is a high-spirited high school student who defies stereotypes with her genuine
+                        passion
+                        for otaku culture.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/kiyotaka-ayanokouji.jpg" alt="">
+                    <h3>Kiyotaka Ayanokouji</h3>
+                    <p>Stoic, detached, and rarely shows any facial expression.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/yuno-gasai.jpg" alt="">
+                    <h3>Yuno Gasai</h3>
+                    <p>Intelligent, manipulative, and obsessed with her own perfection.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/mikasa-ackerman.jpg" alt="">
+                    <h3>Mikasa Ackerman</h3>
+                    <p>Devoted and protective, always ready to defend her friends.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/eren-yeager.jpg" alt="">
+                    <h3>Eren Yeager</h3>
+                    <p>Passionate and determined, driven by a strong sense of justice.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/lelouch-lamperouge.jpg" alt="">
+                    <h3>Lelouch Lamperouge</h3>
+                    <p>Intelligent and strategic, always thinking several steps ahead.</p>
+                </article>
+
+                <article class="card">
+                    <img src="assets/characters/luffy-monkey-d.jpg" alt="">
+                    <h3>Luffy Monkey D.</h3>
+                    <p>Adventurous and optimistic, with an unbreakable spirit and a strong sense of loyalty.</p>
+                </article>
+
+            </div>
+        </section>
+
+        <section class="description" id="description">
+            <h2>Description</h2>
+
+            <p>hey hey hey lloouuu ₍ᐢ‥ᐢ₎ everyone. . . welcome to ❝ 𝗠𝘂𝗹𝘁𝗶 𝗔𝗻𝗶𝗺𝗲 𝗜𝗻𝘁𝗲𝗿𝗮𝗰𝘁𝗶𝗼𝗻
+                𝗡𝗲𝘁𝘄𝗼𝗿𝗸 ❞
+            </p>
+
+            <p>— 𝑆𝑒𝑏𝑒𝑙𝑢𝑚 𝑚𝑎𝑠𝑢𝑘 𝑙𝑖𝑡𝑒𝑟𝑎𝑠𝑖/𝑏𝑎𝑐𝑎 𝑟𝑢𝑙𝑒𝑠 𝑑𝑢𝑙𝑢 𝑦𝑎𝑘𝑘</p>
+
+            <h3>𐔌 . ⋮ 𝓡ᥙℓᥱʂ .ᐟ ֹ ₊ ꒱</h3>
+
+            <ul style="list-style-type: none; padding-left: 0;">
+                <li>જ⁀➴ 𝗻𝗼 𝗽𝗿𝗼𝗺𝗼𝘀𝗶 𝗮𝗽𝗮𝗽𝘂𝗻 𝗮𝘁𝗮𝘂 𝘀𝗵𝗮𝗿𝗲 𝘆𝗮𝗻𝗴 𝘁𝗶𝗱𝗮𝗸 𝗽𝗲𝗻𝘁𝗶𝗻𝗴.</li>
+                <li>જ⁀➴ 𝗻𝗼 𝗸𝗶𝗿𝗶𝗺 +𝟮𝟭𝟭𝟴 𝗺𝗮𝘂 𝘀𝘁𝗸𝗿 𝗺𝗮𝘂𝗽𝘂𝗻 𝗳𝘁, 𝗯𝗮𝗸𝗮𝗹𝗮𝗻 𝗱𝗶 𝗸𝗶𝗰𝗸</li>
+                <li>જ⁀➴ 𝗻𝗴𝗲𝗿𝘁𝗶 𝗿𝗽𝗮 𝘆𝗮𝗽𝗽 (◍•ᴗ•◍)</li>
+                <li>જ⁀➴ 𝗺𝗲𝗺𝗮𝗸𝗮𝗶 𝗰𝗵𝗮𝗿 𝗮𝗻𝗶𝗺𝗲 𝘆𝗮𝗮, 𝗴𝗮𝗯𝗼𝗹𝗲𝗵 𝗻𝗴𝗮𝗺𝗯𝗶𝗹 𝗰𝗵𝗮𝗿 𝗼𝗿𝗮𝗻𝗴
+                    𝗹𝗮𝗶𝗻!! [ 𝘁𝗶𝗱𝗮𝗸 𝗯𝗼𝗹𝗲𝗵 𝘀𝗮𝗺𝗮, 𝗗𝗜𝗟𝗔𝗥𝗔𝗡𝗚 𝗣𝗔𝗞𝗘 𝗖𝗛𝗔𝗥𝗔 𝗗𝗔𝗥𝗜 𝗚𝗔𝗠𝗘
+                    𝗔𝗧𝗔𝗨 𝗩𝗜𝗦𝗨𝗔𝗟 ]</li>
+                <li>જ⁀➴ 𝗺𝗲𝗺𝗯𝗮𝗿 𝘄𝗮𝗷𝗶𝗯 𝗶𝗻𝘁𝗿𝗼!! 𝟮𝟰 𝗷𝗺 𝗴𝗮 𝗶𝗻𝘁𝗿𝗼?? 𝗸𝗶𝗰𝗸</li>
+                <li>જ⁀➴ 𝗴𝗮𝗻𝗰𝗵𝗮𝗿?? 𝗠𝗮𝘅 𝟭 𝗸𝗮𝗹𝗶 𝗱𝗹𝗺 𝘀𝗲𝗺𝗶𝗻𝗴𝗴𝘂.</li>
+                <li>જ⁀➴ 𝘁𝗼𝘅𝗶𝗰 𝗯𝗲𝗿𝗹𝗲𝗯𝗶𝗵𝗮𝗻?? 𝗸𝗶𝗰𝗸</li>
+                <li>જ⁀➴ 𝗹𝗼 𝗯𝗮𝗽𝗲𝗿? 𝗹𝗼 𝗸𝗮𝗹𝗮𝗵.</li>
+                <li>જ⁀➴ 𝗷𝗮𝗻𝗴𝗮𝗻 𝗸𝗲𝗹𝘂𝗮𝗿 - 𝗺𝗮𝘀𝘂𝗸.</li>
+                <li>જ⁀➴ 𝗱𝗶𝗹𝗮𝗿𝗮𝗻𝗴 𝗸𝗮𝗰𝗮𝗻𝗴𝗶𝗻 𝘀𝗶𝗮𝗽𝗮𝗽𝘂𝗻, 𝗵𝗮𝗿𝗴𝗮𝗶𝗻 𝗼𝗿𝗮𝗻𝗴 𝘀𝗶𝗮𝗽𝗮𝗽𝘂𝗻
+                    𝗶𝘁𝘂 𝘆𝗮.</li>
+                <li>જ⁀➴ 𝗶𝗻𝘁𝗿𝗼 𝘄𝗮𝗷𝗶𝗯 𝗽𝗮𝗸𝗲 𝗳𝗼𝘁𝗼 𝗰𝗵𝗮𝗿</li>
+                <li>જ⁀➴ 𝗼𝘂𝘁/𝗹𝗲𝗳𝘁 𝘄𝗮𝗷𝗶𝗯 𝘁𝗮𝗴 𝗮𝗱𝗺𝗶𝗻. 𝗦𝗲𝗯𝘂𝘁 𝗻𝗮𝗺𝗲, 𝗰𝗵𝗮𝗿𝗮, 𝘁𝗶𝘁𝘁𝗹𝗲 &
+                    𝗻𝗼𝗯𝗲𝗹 𝗼𝗸𝗸𝗮𝘆𝘆𝘆. 𝗸𝗮𝗹𝗮𝘂 𝗻𝗴𝗴𝗮𝗸?? 𝗹𝘂 𝗸𝗲𝗻𝗮 𝗹𝗮𝗸𝗯𝗮𝗻</li>
+                <li>જ⁀➴ 𝗷𝗮𝗻𝗴𝗮𝗻 𝗯𝗮𝗵𝗮𝘀 𝗿𝗹 𝗯𝗲𝗿𝗹𝗲𝗯𝗶𝗵𝗮𝗻?? 𝗼𝗸𝗮𝘆𝘆?</li>
+                <li>જ⁀➴ 𝗸𝗶𝗿𝗳𝗼𝘁/𝘃𝗶𝗱𝗯𝗮𝗿 𝟭𝘅 𝗹𝗶𝗮𝘁, 𝗸𝗲𝗰𝘂𝗮𝗹𝗶 𝗰𝗼𝗹𝗹𝗮𝗯 𝗯𝗲𝘀𝗮𝗿/𝗯𝗲𝗿𝘀𝗮𝗺𝗮.
+                    (𝗠𝗮𝘂 𝗰𝗼𝗹𝗹𝗮𝗯 𝗸𝗲𝗰𝗶𝗹𝗹𝗮𝗻 𝘁𝗮𝗴 𝗴𝗰 𝗮𝗷𝗮 𝗮𝘁𝗮𝘂 𝗸𝗶𝗿𝗶𝗺 𝗸𝗲 𝘀𝗹𝗿)</li>
+                <li>જ⁀➴ 𝗺𝗮𝘁𝗮 - 𝗺𝗮𝘁𝗮/𝘁𝘂𝗸𝗮𝗻𝗴 𝗰𝗼𝗽𝘆?? 𝗴𝗮 𝗱𝗶𝘂𝗻𝗱𝗮𝗻𝗴, 𝘁𝗵𝗮𝗻𝗸𝘀.</li>
+                <li>જ⁀➴ 𝗳𝗿𝗲𝗲 𝘁𝗮𝗴 𝘀𝘄. 𝗻𝗼 𝗱𝗲𝗯𝗮𝘁²</li>
+                <li>જ⁀➴ 𝗸𝗮𝗹𝗮𝘂 𝘁𝗶𝗱𝗮𝗸 𝗮𝗱𝗮 𝗻𝗴𝗲𝗿𝘁𝗶 𝗮𝗽𝗮𝗽𝘂𝗻 𝗶𝘁𝘂 𝗿𝗰 𝗼𝘄𝗻𝗲𝗿 𝗮𝘁𝗮𝘂
+                    𝗮𝗱𝗺𝗶𝗻 𝘆𝗮𝗮𝗮𝗽𝗽</li>
+                <li>જ⁀➴ 𝗽𝗮𝗸𝗲 𝗰𝗵𝗮𝗿𝗮 𝗮𝗻𝗶𝗺𝗲!! 𝘀𝗲𝗺𝘂𝗮𝗻𝘆𝗮 𝗮𝗻𝗶𝗺𝗲 (◍•ᴗ•◍)</li>
+                <li>જ⁀➴ 𝗴𝗮𝘂𝘀𝗮𝗵 𝗱𝗶𝗲𝗺/𝗻𝘆𝗶𝗺𝗮𝗸 𝗺𝗲𝗻𝗱𝗶𝗻𝗴 𝘆𝗮𝗽𝗽𝗶𝗻𝗴 𝗱𝗮𝗽𝗮𝘁 𝗱𝘂𝗶𝘁</li>
+                <li>જ⁀➴ 𝗶𝗸𝘂𝘁 𝗻𝗶𝗺𝗯𝗿𝘂𝗻𝗴 𝘆𝗮!! ^^</li>
+                <li>જ⁀➴ 𝗮𝗻𝗴𝗴𝗮𝗽 𝘀𝗮𝗷𝗮 𝗶𝗻𝗶 𝗿𝘂𝗺𝗮𝗵 𝗸𝗲 𝟮 𝗸𝗮𝗹𝗶𝗮𝗻!!</li>
+                <li>જ⁀➴ 𝗴𝗼𝘀𝗶𝗽, 𝗴𝗼𝘀𝗶𝗽, 𝘆𝘂𝗸𝘀. . . ❕</li>
+                <li>જ⁀➴ 𝗺𝗮𝗶𝗻 𝗯𝘂𝗸𝗮𝗻 𝘁𝗲𝗺𝗽𝗮𝘁 𝗷𝘂𝗮𝗹𝗮𝗻. 𝗮𝘁𝗮𝘂 𝗽𝘂𝗻 𝘀𝗲𝗯𝗮𝗿
+                    𝗹𝗶𝗻𝗸/𝗽𝗿𝗼𝗺𝗼𝘀𝗶/𝗰𝘂𝗿𝗶 𝗺𝗲𝗺𝗯𝗲𝗿. 𝘆𝗮𝗻𝗴 𝗷𝘂𝗮𝗹𝗮𝗻 𝗴𝘂𝗲 𝗸𝗶𝗰𝗸/𝗵𝗮𝗽𝘂𝘀.
+                </li>
+                <li>જ⁀➴ 𝗴𝗮𝘂𝘀𝗮𝗵 𝗸𝗶𝗿𝗶𝗺 𝗿𝗹 𝗮𝘁𝗮𝘂 𝗽𝗼𝘀𝘁 𝗿𝗹 𝗷𝗶𝗸 𝗶𝗻𝗶 𝗿𝗽, vn nggak boleh kalau
+                    bisa hapus sendiri.mandiri ,wahai anak muda</li>
+            </ul>
+
+            <div class="staff-section">
+                <p>⊹ ࣪ ˖╰┈➤ 𝗼͟𝘄͟𝗻͟𝗲͟𝗿͟ .ᐟ</p>
+                <ul style="list-style-type: none; padding-left: 10px;">
+                    <li>˙ ⌗ 🌱 . 𖦹˙— 𝐒ℎ𝑖𝑧𝑢𝑘𝑢 𝐌𝑖𝑜𝑟𝑖⁸³¹⁰</li>
+                    <li>˙ ⌗ 🎐 . 𖦹˙— 𝐂𝑙𝑎𝑟𝑎¹⁹³¹⁵</li>
+                </ul>
+
+                <p>⊹ ࣪ ˖╰┈➤ 𝗮͟𝗱͟𝗺͟𝗶͟𝗻͟ .ᐟ</p>
+                <ul style="list-style-type: none; padding-left: 10px;">
+                    <li>𖦹 ☘️ ୭ ˚ . ᵎᵎ 𝐋𝑢𝑙𝑎⁰⁷²⁶</li>
+                    <li>𖦹 🫐 ୭ ˚ . ᵎᵎ 𝐑𝑦𝑢𝑘𝑎²⁹²³</li>
+                    <li>𖦹 🍉 ୭ ˚ . ᵎᵎ 𝐙𝑎𝑜⁹¹⁴⁰</li>
+                </ul>
+            </div>
+            <p>
+                𝗹𝗶𝗻𝗸 𝗺𝗮𝗶𝗻 [𝗚𝗖]<br>
+                <a href="https://chat.whatsapp.com/KUM2Li8pvvU5KWb97BmpvM">Klik di sini untuk join WhatsApp Group</a>
+            </p>
+            <p>
+                𝗹𝗶𝗻𝗸 𝗰𝗵<br>
+                <a href="https://whatsapp.com/channel/0029VbCPLxSAojYketMwyU31">Klik di sini untuk join WhatsApp
+                    Channel</a>
+            </p>
+            <p>
+                𝗿𝗲𝗾 𝗲𝘃𝗲𝗻𝘁? 𝗿𝗰 :<br>
+            </p>
+            <p>
+                <a href="https://wa.me//6283187238310">[𝗼𝘄𝗻𝗲𝗿 𝗸𝗲 𝟭]</a>
+                <a href="https://wa.me//62881022219315">[𝗼𝘄𝗻𝗲𝗿 𝗸𝗲 𝟮]</a>
+            </p>
+            <!-- <p>
+                𝗹𝗶𝗻𝗸 𝗿𝗲𝗾:<br>
+                <a href="https://forms.gle/9ZsHh7n2mL8XoVhN6">Klik di sini untuk request karakter</a>
+            </p> -->
+        </section>
+
+        <section class="text" id="document">
+            <div class="grid">
+            </div>
+
+            <div class="intro-box">
+                <h3>📋 Format Intro</h3>
+                <div class="copy-container">
+                    <pre id="introText">
+h͟e͟y͟y͟ w͟e͟l͟c͟o͟m͟e͟ t͟o͟ m͟a͟i͟n͟ 
+─𝑚𝑢𝑙𝑡𝑖 𝑎𝑛𝑖𝑚𝑒 𝑖𝑛𝑡𝑒𝑟𝑎𝑐𝑡𝑖𝑜𝑛 𝑛𝑒𝑡𝑤𝑜𝑟𝑘.
+
+〖  ˙ ✧ ˖ °📷 ༘ ⋆ 𝗜ᑎ𝗧ᖇ𝗢 ᑭᗩ𝗞ᗴ ᑭ𝗜ᑕ𝗧!! ᑕᕼᗩᖇ 𝗬ᗩᑎᘜ 𝗞ᗩᗰᑌ ᑭᗩ𝗞ᗴ 〗
+──────────────────
+
+╰┈➤ 𝗻𝗮𝗺𝗲⋯ [𝗥𝗣] :: `isi disini yapp`
+╰┈➤ 𝗰𝗵𝗮𝗿𝗮𝗰𝘁𝗲𝗿  :: `isi disini yapp`
+╰┈➤ 𝘁𝗶𝘁𝘁𝗹𝗲⋯  :: `isi disini yapp`
+╰┈➤ 𝗻𝗼𝗯𝗲𝗹⋯ [𝗻𝗼𝗺𝗼𝗿 𝗯𝗲𝗹𝗮𝗸𝗮𝗻𝗴 𝘄𝗮] :: `isi disini yapp`
+
+Tᗩᘜ ᗩᗪᗰIᑎ Oᖇ Oᗯᑎᗴᖇ : @
+
+✦•┈๑⋯⋅⋯⋅⋯⋅⋯⋅⋅⋯⋯⋅⋯⋅⋯⋅ ⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅๑┈•✦
+𝘀𝗲𝗲𝘂 𝗮𝗹𝗹 𝗺𝗼𝗴𝗮 𝗯𝗲𝘁𝗮𝗵
+
+𝗸𝗮𝗹𝗮𝘂 𝗺𝗮𝘂 𝗹𝗶𝗮𝘁 𝗰𝗵𝗮𝗿𝗮 𝗸𝗮𝗺𝘂, 𝗹𝗶𝗮𝘁 𝗱𝗶 𝗰𝗵/𝘀𝗹 𝗠.𝗔.𝗜.𝗡 ⬇️
+https://whatsapp.com/channel/0029VbCPLxSAojYketMwyU31 </pre>
+                    <button onclick="copyIntro()" class="btn-copy">Salin Format</button>
+                </div>
+                <p id="copyStatus" style="display:none; color: var(--accent); font-size: 0.8rem; margin-top: 5px;">
+                    Berhasil
+                    disalin! ✨</p>
+            </div>
+
+            <div class="event-box">
+                <h3>📋 Format Event</h3>
+                <div class="copy-container-event">
+                    <pre id="eventText">
+. ꒷ 🎐 .𖦹˙— 𝗛𝗲𝘆 𝘀𝗲𝗺𝘂𝗮𝗻𝘆𝗮!! 𝗰𝗼𝗯𝗮 𝗹𝗶𝗮𝘁 𝗸𝗲𝘀𝗶𝗻𝗶!! 𝗰𝗼𝗯𝗮 𝗹𝗶𝗮𝘁 𝗸𝗲𝘀𝗶𝗻𝗶!! 
+
+ᯓ𝗔𝗗𝗔 𝗘𝗩𝗘𝗡𝗧 𝗡𝗜𝗖𝗛 ૮꒰ ˶• ༝ •˶꒱ა ♡
+𝗝𝗔𝗗𝗜 𝗘𝗩𝗘𝗡𝗧 𝗡𝗬𝗔 𝗧𝗘𝗡𝗧𝗔𝗡𝗚 `isi disini yapp`
+
+۶ৎ 𝘀𝗮𝘆𝗮 `𝗻𝗮𝗺𝗲 𝗮𝘀 𝗰𝗵𝗮𝗿𝗮` 𝘁𝗲𝗹𝗮𝗵 𝘀𝗲𝗹𝗲𝘀𝗮𝗶 𝗺𝗲𝗻𝗴𝗲𝗿𝗷𝗮𝗸𝗮𝗻 𝗲𝘃𝗲𝗻𝘁 𝗶𝗻𝗶⋯
+ 
+‧₊ ᵎᵎ 𝗲͟𝘃͟𝗲͟𝗻͟𝘁͟ 𝗱͟𝗮͟𝗿͟𝗶͟ :: isi disini yapp
+𝓡𝓮𝓺𝓾𝓮𝓼𝓽 「 isi disini yapp 」
+
+╰┈➤ 𝙈.𝘼.𝙄.𝙉  [ 𝐌𝐮𝐥𝐭𝐢 𝐀𝐧𝐢𝐦𝐞 𝐈𝐧𝐭𝐞𝐫𝐚𝐜𝐭𝐢𝐨𝐧 𝐍𝐞𝐭𝐰𝐨𝐫𝐤 ]
+
+𝘁𝗲𝗿𝘁𝗮𝗿𝗶𝗸 𝗽𝗮𝗱𝗮 𝗲𝘃𝗲𝗻𝘁 𝗶𝗻𝗶, 𝗺𝗮𝘂 𝗶𝗸𝘂𝘁?? 
+𝗷𝗼𝗶𝗻 𝗮𝗷𝗮 𝗯𝗿𝗲𝗲 𝗹𝘂 𝗴𝗮𝗯𝗮𝗸𝗮𝗹 𝗱𝗶𝗸𝗮𝗰𝗮𝗻𝗴𝗶𝗻
+> https://chat.whatsapp.com/KUM2Li8pvvU5KWb97BmpvM </pre>
+                    <button onclick="copyEvent()" class="btn-copy-event">Salin Format</button>
+                </div>
+                <p id="copyStatusevent" style="display:none; color: var(--accent); font-size: 0.8rem; margin-top: 5px;">
+                    Berhasil
+                    disalin! ✨</p>
+            </div>
+
+            <!-- <div class="outro-box">
+                <h3>📋 Format Outro</h3>
+                <div class="copy-container-outro">
+                    <pre id="outroText">
+h͟e͟y͟y͟ w͟e͟l͟c͟o͟m͟e͟ t͟o͟ m͟a͟i͟n͟ 
+─𝑚𝑢𝑙𝑡𝑖 𝑎𝑛𝑖𝑚𝑒 𝑖𝑛𝑡𝑒𝑟𝑎𝑐𝑡𝑖𝑜𝑛 𝑛𝑒𝑡𝑤𝑜𝑟𝑘.
+
+〖  ˙ ✧ ˖ °📷 ༘ ⋆ 𝗜ᑎ𝗧ᖇ𝗢 ᑭᗩ𝗞ᗴ ᑭ𝗜ᑕ𝗧!! ᑕᕼᗩᖇ 𝗬ᗩᑎᘜ 𝗞ᗩᗰᑌ ᑭᗩ𝗞ᗴ 〗
+──────────────────
+
+╰┈➤ 𝗻𝗮𝗺𝗲⋯ [𝗥𝗣] :: `isi disini yapp`
+╰┈➤ 𝗰𝗵𝗮𝗿𝗮𝗰𝘁𝗲𝗿  :: `isi disini yapp`
+╰┈➤ 𝘁𝗶𝘁𝘁𝗹𝗲⋯  :: `isi disini yapp`
+╰┈➤ 𝗻𝗼𝗯𝗲𝗹⋯ [𝗻𝗼𝗺𝗼𝗿 𝗯𝗲𝗹𝗮𝗸𝗮𝗻𝗴 𝘄𝗮] :: `isi disini yapp`
+
+Tᗩᘜ ᗩᗪᗰIᑎ Oᖇ Oᗯᑎᗴᖇ : @
+
+✦•┈๑⋯⋅⋯⋅⋯⋅⋯⋅⋅⋯⋯⋅⋯⋅⋯⋅ ⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅⋯⋅๑┈•✦
+𝘀𝗲𝗲𝘂 𝗮𝗹𝗹 𝗺𝗼𝗴𝗮 𝗯𝗲𝘁𝗮𝗵
+
+𝗸𝗮𝗹𝗮𝘂 𝗺𝗮𝘂 𝗹𝗶𝗮𝘁 𝗰𝗵𝗮𝗿𝗮 𝗸𝗮𝗺𝘂, 𝗹𝗶𝗮𝘁 𝗱𝗶 𝗰𝗵/𝘀𝗹 𝗠.𝗔.𝗜.𝗡 ⬇️
+https://whatsapp.com/channel/0029VbCPLxSAojYketMwyU31 </pre>
+                    <button onclick="copyOutro()" class="btn-copy-outro">Salin Format</button>
+                </div>
+                <p id="copyStatusoutro" style="display:none; color: var(--accent); font-size: 0.8rem; margin-top: 5px;">
+                    Berhasil
+                    disalin! ✨</p>
+            </div> -->
+        </section>
+
+        <!-- ================= STATUS ================= -->
+        <section class="status-box reveal" id="status">
+            <h2>Server Status</h2>
+            <p>In-Game Time:</p>
+            <time id="clock">Loading...</time>
+        </section>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+    <footer>
+        <p>© 2026 MAIN Roleplay. All rights reserved.</p>
+    </footer>
+
+    <!-- ================= SCRIPT ================= -->
+    <!-- <script src="js/script.js" defer></script> -->
+
+    <script>
+        /* ===============================
+   INIT AFTER DOM LOADED
+================================= */
+        document.addEventListener("DOMContentLoaded", () => {
+            initTheme();
+            initClock();
+            initReveal();
+            initParticles();
+        });
+
+
+        /* ===============================
+           MOBILE MENU
+        ================================= */
+        function toggleMenu() {
+            const nav = document.getElementById("navLinks");
+            nav?.classList.toggle("active");
+        }
+
+
+        /* ===============================
+           THEME SYSTEM (Smart + Saved)
+        ================================= */
+        function initTheme() {
+            const savedTheme = localStorage.getItem("theme");
+            const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            const themeIcon = document.getElementById("theme-icon");
+
+            if (savedTheme === "dark" || (!savedTheme && prefersDark)) {
+                document.body.classList.add("dark");
+                if (themeIcon) themeIcon.textContent = "🌙";
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeBtn = document.getElementById("theme-icon");
+
+            body.classList.toggle("dark");
+
+            const isDark = body.classList.contains("dark");
+
+            if (themeBtn) {
+                themeBtn.style.transform = "rotate(360deg)";
+                setTimeout(() => themeBtn.style.transform = "rotate(0deg)", 400);
+                themeBtn.textContent = isDark ? "🌙" : "☀️";
+            }
+
+            localStorage.setItem("theme", isDark ? "dark" : "light");
+        }
+
+
+        /* ===============================
+           LIVE CLOCK
+        ================================= */
+        function initClock() {
+            const clock = document.getElementById("clock");
+            if (!clock) return;
+
+            const updateClock = () => {
+                clock.textContent = new Date().toLocaleTimeString("id-ID", {
+                    hour: "2-digit",
+                    minute: "2-digit",
+                    second: "2-digit"
+                });
+            };
+
+            updateClock();
+            setInterval(updateClock, 1000);
+        }
+
+
+        /* ===============================
+           SCROLL REVEAL (Optimized)
+        ================================= */
+        function initReveal() {
+            const elements = document.querySelectorAll(".reveal");
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("active");
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15
+            });
+
+            elements.forEach(el => observer.observe(el));
+        }
+
+
+        /* ===============================
+           CANVAS PARTICLES (Smooth)
+        ================================= */
+        function initParticles() {
+            const canvas = document.getElementById("particles");
+            if (!canvas) return;
+
+            const ctx = canvas.getContext("2d");
+            let particles = [];
+            const particleCount = 80;
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            function createParticles() {
+                particles = [];
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push({
+                        x: Math.random() * canvas.width,
+                        y: Math.random() * canvas.height,
+                        radius: Math.random() * 2 + 1,
+                        speed: Math.random() * 0.6 + 0.2
+                    });
+                }
+            }
+
+            function drawParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = "rgba(110,168,255,0.5)";
+
+                particles.forEach(p => {
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                    ctx.fill();
+
+                    p.y += p.speed;
+                    if (p.y > canvas.height) {
+                        p.y = 0;
+                        p.x = Math.random() * canvas.width;
+                    }
+                });
+
+                requestAnimationFrame(drawParticles);
+            }
+
+            resizeCanvas();
+            createParticles();
+            drawParticles();
+
+            window.addEventListener("resize", () => {
+                resizeCanvas();
+                createParticles();
+            });
+        }
+
+
+        /* ===============================
+           COPY INTRO (Better UX)
+        ================================= */
+        function copyIntro() {
+            const intro = document.getElementById("introText");
+            const status = document.getElementById("copyStatus");
+
+            if (!intro) return;
+
+            navigator.clipboard.writeText(intro.innerText)
+                .then(() => {
+                    if (!status) return;
+                    status.style.display = "block";
+                    status.textContent = "Berhasil disalin! ✨";
+
+                    setTimeout(() => {
+                        status.style.display = "none";
+                    }, 2000);
+                })
+                .catch(() => {
+                    if (!status) return;
+                    status.style.display = "block";
+                    status.textContent = "Gagal menyalin ❌";
+                });
+        }
+
+        /* ===============================
+           COPY EVENT (Better UX)
+        ================================= */
+        function copyEvent() {
+            const event = document.getElementById("eventText");
+            const statusevent = document.getElementById("copyStatusevent");
+
+            if (!event) return;
+
+            navigator.clipboard.writeText(event.innerText)
+                .then(() => {
+                    if (!statusevent) return;
+                    statusevent.style.display = "block";
+                    statusevent.textContent = "Berhasil disalin! ✨";
+
+                    setTimeout(() => {
+                        statusevent.style.display = "none";
+                    }, 2000);
+                })
+                .catch(() => {
+                    if (!statusevent) return;
+                    statusevent.style.display = "block";
+                    statusevent.textContent = "Gagal menyalin ❌";
+                });
+        }
+
+        /* ===============================
+           COPY OUTRO (Better UX)
+        ================================= */
+        // function copyOutro() {
+        //     const outro = document.getElementById("outroText");
+        //     const statusoutro = document.getElementById("copyStatusoutro");
+
+        //     if (!outro) return;
+
+        //     navigator.clipboard.writeText(outro.innerText)
+        //         .then(() => {
+        //             if (!statusoutro) return;
+        //             statusoutro.style.display = "block";
+        //             statusoutro.textContent = "Berhasil disalin! ✨";
+
+        //             setTimeout(() => {
+        //                 statusoutro.style.display = "none";
+        //             }, 2000);
+        //         })
+        //         .catch(() => {
+        //             if (!statusoutro) return;
+        //             statusoutro.style.display = "block";
+        //             statusoutro.textContent = "Gagal menyalin ❌";
+        //         });
+        // }
+
+        // Smooth Scroll untuk Navigasi
+        document.querySelectorAll('.nav-links a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Stop lompatan kasar
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Hitung posisi dengan offset agar tidak tertutup header melayang
+                    const headerOffset = 100;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+
+                // Tutup menu mobile otomatis setelah klik (jika di HP)
+                const navLinks = document.getElementById("navLinks");
+                if (navLinks.classList.contains("active")) {
+                    navLinks.classList.remove("active");
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
